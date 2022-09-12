@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\BlogController::class, 'posts']);
+Route::get('/author/{author}', [App\Http\Controllers\BlogController::class, 'author']);
+Route::get('/category/{category}', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'index']);
 
 Auth::routes();
 
