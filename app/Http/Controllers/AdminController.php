@@ -26,7 +26,8 @@ class AdminController extends Controller
     public function category (Category $category) {
         return $category;
     }
-
+    public function createPost() {}
+    public function createCategory() {}
     public function newPost() {}
 
     public function newCategory() {}

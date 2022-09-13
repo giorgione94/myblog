@@ -25,9 +25,12 @@ Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'prof
 Route::get('/admin/post/{post}',[App\Http\Controllers\AdminController::class, 'post']);
 Route::get('/admin/category/{category}',[App\Http\Controllers\AdminController::class, 'category']);
 
+Route::get('/admin/post/new',[App\Http\Controllers\AdminController::class, 'newPost']);
+Route::get('/admin/category/new',[App\Http\Controllers\AdminController::class, 'newCategory']);
+
 Route::post('/admin/profile', [App\Http\Controllers\AdminController::class, 'updateProfile']);
 Route::post('/admin/post/{post}',[App\Http\Controllers\AdminController::class, 'updatePost']);
 Route::post('/admin/category/{category}',[App\Http\Controllers\AdminController::class, 'updateCategory']);
 
-Route::post('/admin/post/new',[App\Http\Controllers\AdminController::class, 'newPost']);
-Route::post('/admin/category/new',[App\Http\Controllers\AdminController::class, 'newCategory']);
+Route::post('/admin/post/new',[App\Http\Controllers\AdminController::class, 'createPost']);
+Route::post('/admin/category/new',[App\Http\Controllers\AdminController::class, 'createCategory']);
