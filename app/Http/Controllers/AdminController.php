@@ -9,6 +9,19 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $user_id = Auth::user()->id;
+        $posts = Post::where('user_id', $user_id)->with('category')->get();
+        $categories = Category::all();
+        return view('admin.dashboard')->with('posts', $posts)->with('categories', $categories);
+    }
+
     public function profile() {
         $user = Auth::user();
         return $user;
