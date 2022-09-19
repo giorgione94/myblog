@@ -16,9 +16,9 @@
 
                         <h1>YOUR POSTS</h1>
 
-                        <a href="#" class="btn btn-outline-primary">New Post</a>
+                        <a href="#" class="btn btn-outline-primary mb-2">New Post</a>
 
-                        <table class="table">
+                        <table class="table table-success table-striped">
                             <thead>
                                 <th>Title</th>
                                 <th>Category</th>
@@ -61,9 +61,9 @@
 
                         <h2>CATEGORIES</h2>
 
-                        <a href="#" class="btn btn-outline-primary">New Category</a>
+                        <a href="#" class="btn btn-outline-primary mb-2">New Category</a>
 
-                        <table class="table category">
+                        <table class="table">
                             <thead>
                                 <th>Title</th>
                                 <th>Show</th>
@@ -71,7 +71,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
-                                    <tr>
+                                    <tr class="table-active">
                                         <td>{{ $category->title }}</td>
                                         <td>
                                             <a href="#" class="btn btn-outline-primary">
@@ -101,7 +101,7 @@
                             </tbody>
                         </table>
 
-                        <a href="#" class="btn btn-outline-primary">Edit Profile</a>
+                        <a href="#" class="btn btn-outline-primary mb-2">Edit Profile</a>
                     </div>
                 </div>
             </div>
