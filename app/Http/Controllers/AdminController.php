@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Foundation\Auth\User;
 
 class AdminController extends Controller
 {
@@ -24,7 +25,7 @@ class AdminController extends Controller
 
     public function profile() {
         $user = Auth::user();
-        return $user;
+        return view('admin.profile')->with('user', $user);
     }
 
     public function post (Post $post)
@@ -45,7 +46,15 @@ class AdminController extends Controller
 
     public function newCategory() {}
 
-    public function updateProfile() {}
+    public function updateProfile(Request $request) {
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->bio = $request->bio;
+        $user->profile_image = $request->profile_image;
+        $user->save();
+        return redirect(route('editProfile'));
+    }
     public function updatePost() {}
     public function updateCategory() {}
 }

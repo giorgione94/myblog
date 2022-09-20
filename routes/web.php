@@ -14,21 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\BlogController::class, 'posts']);
-Route::get('/author/{author}', [App\Http\Controllers\BlogController::class, 'author']);
+Route::get('/author/{author}', [App\Http\Controllers\BlogController::class, 'author'])->name('author');
 Route::get('/category/{category}', [App\Http\Controllers\CategoryController::class, 'index']);
 Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
-Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'profile']);
+Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('editProfile');
 Route::get('/admin/post/{post}',[App\Http\Controllers\AdminController::class, 'post']);
 Route::get('/admin/category/{category}',[App\Http\Controllers\AdminController::class, 'category']);
 
 Route::get('/admin/post/new',[App\Http\Controllers\AdminController::class, 'newPost']);
 Route::get('/admin/category/new',[App\Http\Controllers\AdminController::class, 'newCategory']);
 
-Route::post('/admin/profile', [App\Http\Controllers\AdminController::class, 'updateProfile']);
+Route::post('/admin/profile', [App\Http\Controllers\AdminController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/admin/post/{post}',[App\Http\Controllers\AdminController::class, 'updatePost']);
 Route::post('/admin/category/{category}',[App\Http\Controllers\AdminController::class, 'updateCategory']);
 
