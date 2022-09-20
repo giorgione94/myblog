@@ -33,7 +33,7 @@
                                         <td>{{ $post->category->title }}</td>
                                         <td>{{ $post->publication_date }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-outline-primary">
+                                            <a href="{{route('post', $post) }}" class="btn btn-outline-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                     <path
@@ -74,7 +74,7 @@
                                     <tr class="table-active">
                                         <td>{{ $category->title }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-outline-primary">
+                                            <a href="{{route('category', $category) }}" class="btn btn-outline-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                     <path
@@ -101,7 +101,7 @@
                             </tbody>
                         </table>
 
-                        <a href="#" class="btn btn-outline-primary mb-2">Edit Profile</a>
+                        <a href="{{route('editProfile') }}" class="btn btn-outline-primary mb-2">Edit Profile</a>
                     </div>
                 </div>
             </div>

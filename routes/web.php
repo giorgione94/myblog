@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\BlogController::class, 'posts']);
+Route::get('/', [App\Http\Controllers\BlogController::class, 'posts'])->name('home');
 Route::get('/author/{author}', [App\Http\Controllers\BlogController::class, 'author'])->name('author');
-Route::get('/category/{category}', [App\Http\Controllers\CategoryController::class, 'index']);
-Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'index']);
+Route::get('/category/{category}', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
+Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'index'])->name('post');
 
 Auth::routes();
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
 Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('editProfile');
 Route::get('/admin/post/{post}',[App\Http\Controllers\AdminController::class, 'post']);
 Route::get('/admin/category/{category}',[App\Http\Controllers\AdminController::class, 'category']);
