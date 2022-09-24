@@ -12,9 +12,14 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Post $post)
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    public function index()
     {
-        return $post;
+        $posts = Post::all();
+        return view('posts.list')->with('posts', $posts);
     }
 
     /**
@@ -24,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+    return view('posts.create');
     }
 
     /**
@@ -35,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //
     }
 
     /**
@@ -46,7 +51,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show')->with('post', $post);
     }
 
     /**
@@ -57,7 +62,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+    //
     }
 
     /**
@@ -69,7 +74,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+    //
     }
 
     /**
@@ -80,6 +85,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+    //
     }
 }
