@@ -12,7 +12,8 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
@@ -29,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-    return view('posts.create');
+        return view('posts.create');
     }
 
     /**
@@ -40,7 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-    //
+    
     }
 
     /**
@@ -85,6 +86,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-    //
+        $post->delete();
+        return redirect()->route('posts.index')
+        ->with('success', 'Car deleted successfully.');
     }
 }
