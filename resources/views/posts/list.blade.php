@@ -17,7 +17,13 @@
                                     {{ $post->publication_date }}
                                 </small>
                             </p>
-                            <button class="btn btn-primary">Show This Article</button>
+                            <a href="{{ route('posts.show', $post) }}" class="btn btn-secondary bg-gradient">
+                                Show This Article
+                            </a>
+
+                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
+                                Edit Article
+                            </a>
                         </div>
                     </div>
                 @endforeach
