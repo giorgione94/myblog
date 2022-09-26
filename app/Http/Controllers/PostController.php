@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -30,7 +32,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create')->with('categories', $categories);
     }
 
     /**
@@ -41,7 +44,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-    
+        $user = Auth::user();
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'body' => 'required',
+            'category_id' => 'required',
+            'publication_date' => 'required'
+        ]);
+        Post::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'category_id' => $request->category_id,
+            'user_id' => $user->id,
+            'publication_date' => $request->publication_date
+        ]);
+        return redirect()->route('home')->with('success', 'Post Created!');
     }
 
     /**
@@ -63,7 +82,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
+        $categories = Category::all();
+        return view('posts.edit')->with('post', $post)->with('categories', $categories);
     }
 
     /**
@@ -75,7 +95,23 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-    //
+        $user = Auth::user();
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'body' => 'required',
+            'category_id' => 'required',
+            'publication_date' => 'required'
+        ]);
+        $post->update([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'category_id' => $request->category_id,
+            'user_id' => $user->id,
+            'publication_date' => $request->publication_date
+        ]);
+        return redirect()->route('home')->with('success', 'Post Updated!');
     }
 
     /**
@@ -87,7 +123,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index')
-        ->with('success', 'Car deleted successfully.');
+        return redirect()->route('home')
+            ->with('success', 'Post deleted!');
     }
 }

@@ -12,8 +12,8 @@
                             <p class="card-subtitle">{{ $post->subtitle }}</p>
                             <p class="card-text">
                                 <small class="text-muted">
-                                    {{ $post->user_id }} |
-                                    {{ $post->category_id }} |
+                                    {{ $post->user->name }} |
+                                    {{ $post->category->title }} |
                                     {{ $post->publication_date }}
                                 </small>
                             </p>
@@ -24,10 +24,18 @@
                             <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
                                 Edit Article
                             </a>
+
+                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
+                    
                 @endforeach
             </div>
+            
         </div>
     </div>
 @endsection

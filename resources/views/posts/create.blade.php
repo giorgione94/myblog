@@ -13,7 +13,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="file" class="form-label text-white">Cover_Image</label>
-                            <input type="file" name="cover_image" class="form-control">
+                            <input type="file" name="image" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="subtitle" class="form-label text-white">Subtitle</label>
@@ -30,10 +30,10 @@
 
                         <div class="mb-3">
                             <label for="category_id" class="form-label text-white">Choose Category</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" id="inputGroupSelect01" name="category_id">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
                             </select>
                         </div>
 
