@@ -9,7 +9,7 @@
 
                     <h1 class="text-light">{{ $post->title }}</h1>
 
-                    <textarea name="body" id="" cols="30" rows="20" class="form-control">{{ $post->body }}</textarea>
+                    <textarea name="body" id="" cols="" rows="" class="form-control">{{ $post->body }}</textarea>
 
                     <p class="card-text">
                         <small class="text-light">

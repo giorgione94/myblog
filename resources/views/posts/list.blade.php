@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @include('alerts')
 @section('content')
-    <div class="container bg-primary bg-gradient">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @foreach ($posts as $post)
