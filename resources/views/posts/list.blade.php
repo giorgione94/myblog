@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('alerts')
 @section('content')
     <div class="container bg-primary bg-gradient">
         <div class="row justify-content-center">
