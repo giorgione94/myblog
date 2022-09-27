@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Category $category)
-    {
-        return $category->posts()->get();
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,7 +36,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $posts = $category->posts()->get();
+        return view('categories.show')->with('category', $category)->with('posts', $posts);
     }
 
     /**

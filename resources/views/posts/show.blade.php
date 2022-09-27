@@ -5,16 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="m-3">
-                    <img src="..." class="card-img-top " alt="...">
+                    <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25" alt="...">
 
                     <h1 class="text-light">{{ $post->title }}</h1>
 
-                    <textarea name="body" id="" cols="" rows="" class="form-control">{{ $post->body }}</textarea>
+                    <p>{{ $post->body }}</p>
 
                     <p class="card-text">
                         <small class="text-light">
-                            {{ $post->user_id }} |
-                            {{ $post->category_id }} |
+                            {{ $post->user->name }} |
+                            {{ $post->category->title }} |
                             {{ $post->publication_date }}
                         </small>
                     </p>

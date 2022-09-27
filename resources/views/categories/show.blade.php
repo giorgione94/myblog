@@ -1,10 +1,16 @@
 @extends('layouts.app')
-@include('alerts')
+
 @section('content')
-    <div class="container">
+    <div class="container bg-secondary bg-gradient">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @foreach ($posts as $post)
+                <div class="m-3">
+                    <img src="..." class="card-img-top " alt="...">
+
+                    <h1 class="text-light">{{ $category->title }}</h1>
+                    <p>{{ $category->subtitle }}</p>
+
+                    @foreach ($posts as $post)
                     <div class="card m-3">
                         <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25" alt="...">
                         <div class="card-body">
@@ -34,8 +40,8 @@
                     </div>
                     
                 @endforeach
+                </div>
             </div>
-            
         </div>
     </div>
 @endsection

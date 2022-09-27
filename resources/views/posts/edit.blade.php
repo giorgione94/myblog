@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="form-control bg-dark bg-gradient">
-                    <form action="{{ route('posts.update', $post) }}" method="POST">
+                    <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -13,8 +13,9 @@
                             <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                         </div>
                         <div class="mb-3">
+                            <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25" alt="...">
                             <label for="file" class="form-label text-white">Cover_Image</label>
-                            <input type="file" name="image" class="form-control" value="{{ $post->cover_image }}">
+                            <input type="file" name="image" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="subtitle" class="form-label text-white">Subtitle</label>

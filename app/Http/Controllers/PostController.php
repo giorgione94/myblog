@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -47,13 +48,19 @@ class PostController extends Controller
         $user = Auth::user();
         $request->validate([
             'title' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'subtitle' => 'required',
             'body' => 'required',
             'category_id' => 'required',
             'publication_date' => 'required'
         ]);
+        if ($request->image) {
+            $name = uniqid().'.'.$request->image->extension();
+            $request->image->move(public_path('images/posts'), $name);
+        }
         Post::create([
             'title' => $request->title,
+            'image' => $name,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
             'category_id' => $request->category_id,
@@ -98,13 +105,19 @@ class PostController extends Controller
         $user = Auth::user();
         $request->validate([
             'title' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'subtitle' => 'required',
             'body' => 'required',
             'category_id' => 'required',
             'publication_date' => 'required'
         ]);
+        if ($request->image) {
+            $name = uniqid().'.'.$request->image->extension();
+            $request->image->move(public_path('images/posts'), $name);
+        }
         $post->update([
             'title' => $request->title,
+            'image' => $name,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
             'category_id' => $request->category_id,
