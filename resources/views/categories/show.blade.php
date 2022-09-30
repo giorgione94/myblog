@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="m-3">
-                    <img src="..." class="card-img-top " alt="...">
+                    <img src="{{ asset('images/categories/' . $category->cover_image) }}" class="card-img-top img-thumbnail w-25" alt="...">
 
                     <h1 class="text-light">{{ $category->title }}</h1>
                     <p>{{ $category->subtitle }}</p>

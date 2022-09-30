@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -25,7 +25,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'cover_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'subtitle' => 'required',
+        ]);
+        if ($request->cover_image) {
+            $name = uniqid() . '.' . $request->cover_image->extension();
+            $request->cover_image->move(public_path('images/categories'), $name);
+        }
+        Category::create([
+            'title' => $request->title,
+            'cover_image' => $name,
+            'subtitle' => $request->subtitle,
+        ]);
+        return redirect()->route('home')->with('success', 'Category Created!');
     }
 
     /**
@@ -48,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -60,7 +74,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'cover_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'subtitle' => 'required',
+
+        ]);
+        if ($request->cover_image) {
+            $name = uniqid() . '.' . $request->cover_image->extension();
+            $request->cover_image->move(public_path('images/categories'), $name);
+        }
+        $category->update([
+            'title' => $request->title,
+            'cover_image' => $name,
+            'subtitle' => $request->subtitle,
+        ]);
+        return redirect()->route('home')->with('success', 'Category Updated!');
     }
 
     /**
@@ -71,6 +100,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('home')
+            ->with('success', 'Category deleted!');
     }
 }
