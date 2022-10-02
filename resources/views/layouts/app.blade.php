@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-secondary bg-gradient">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -78,6 +78,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="py-4">
+            @yield('footer')
+        </footer>
     </div>
 </body>
 </html>
