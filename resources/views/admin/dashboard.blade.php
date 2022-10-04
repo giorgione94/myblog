@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('alerts')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -16,7 +16,7 @@
 
                         <h1>YOUR POSTS</h1>
 
-                        <a href="#" class="btn btn-outline-primary mb-2">New Post</a>
+                        <a href="{{ route('posts.create') }}" class="btn btn-outline-primary mb-2">New Post</a>
 
                         <table class="table table-success table-striped">
                             <thead>
@@ -29,11 +29,15 @@
                             <tbody>
                                 @foreach ($posts as $post)
                                     <tr>
-                                        <td>{{ $post->title }}</td>
+                                        <td>
+                                            <a href="{{ route('posts.edit', $post) }}">
+                                                {{ $post->title }}
+                                            </a>
+                                        </td>
                                         <td>{{ $post->category->title }}</td>
                                         <td>{{ $post->publication_date }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-outline-primary">
+                                            <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                     <path
@@ -44,15 +48,20 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-outline-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                    <path fill-rule="evenodd"
-                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                </svg>
-                                            </a>
+                                            <form action="{{ route('posts.destroy', $post) }}" method="POST"
+                                                class="">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -61,7 +70,7 @@
 
                         <h2>CATEGORIES</h2>
 
-                        <a href="#" class="btn btn-outline-primary mb-2">New Category</a>
+                        <a href="{{ route('categories.create') }}" class="btn btn-outline-primary mb-2">New Category</a>
 
                         <table class="table">
                             <thead>
@@ -72,9 +81,14 @@
                             <tbody>
                                 @foreach ($categories as $category)
                                     <tr class="table-active">
-                                        <td>{{ $category->title }}</td>
                                         <td>
-                                            <a href="{{route('category', $category) }}" class="btn btn-outline-primary">
+                                            <a href="{{ route('categories.edit', $category) }}">
+                                                {{ $category->title }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('categories.show', $category) }}"
+                                                class="btn btn-outline-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                     <path
@@ -85,15 +99,20 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-outline-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                    <path fill-rule="evenodd"
-                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                </svg>
-                                            </a>
+                                            <form action="{{ route('categories.destroy', $category) }}" method="POST"
+                                                class="">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
@@ -101,7 +120,7 @@
                             </tbody>
                         </table>
 
-                        <a href="{{route('editProfile') }}" class="btn btn-outline-primary mb-2">Edit Profile</a>
+                        <a href="{{ route('editProfile') }}" class="btn btn-outline-primary mb-2">Edit Profile</a>
                     </div>
                 </div>
             </div>

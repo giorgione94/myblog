@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'cover_image' => $name,
             'subtitle' => $request->subtitle,
         ]);
-        return redirect()->route('home')->with('success', 'Category Created!');
+        return redirect()->route('dashboard')->with('success', 'Category Created!');
     }
 
     /**
@@ -80,6 +80,7 @@ class CategoryController extends Controller
             'subtitle' => 'required',
 
         ]);
+        $name = $category->cover_image;
         if ($request->cover_image) {
             $name = uniqid() . '.' . $request->cover_image->extension();
             $request->cover_image->move(public_path('images/categories'), $name);
@@ -89,7 +90,7 @@ class CategoryController extends Controller
             'cover_image' => $name,
             'subtitle' => $request->subtitle,
         ]);
-        return redirect()->route('home')->with('success', 'Category Updated!');
+        return redirect()->route('dashboard')->with('success', 'Category Updated!');
     }
 
     /**
@@ -101,7 +102,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('home')
+        return redirect()->route('dashboard')
             ->with('success', 'Category deleted!');
     }
 }

@@ -24,18 +24,8 @@
                                 </small>
                             </p>
                             <a href="{{ route('posts.show', $post) }}" class="btn btn-secondary bg-gradient">
-                                Show This Article
+                                Read more
                             </a>
-
-                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
-                                Edit Article
-                            </a>
-
-                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
                         </div>
                     </div>
                     

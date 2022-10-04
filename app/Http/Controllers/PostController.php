@@ -67,7 +67,7 @@ class PostController extends Controller
             'user_id' => $user->id,
             'publication_date' => $request->publication_date
         ]);
-        return redirect()->route('home')->with('success', 'Post Created!');
+        return redirect()->route('dashboard')->with('success', 'Post Created!');
     }
 
     /**
@@ -111,6 +111,7 @@ class PostController extends Controller
             'category_id' => 'required',
             'publication_date' => 'required'
         ]);
+        $name = $post->image;
         if ($request->image) {
             $name = uniqid().'.'.$request->image->extension();
             $request->image->move(public_path('images/posts'), $name);
@@ -124,7 +125,7 @@ class PostController extends Controller
             'user_id' => $user->id,
             'publication_date' => $request->publication_date
         ]);
-        return redirect()->route('home')->with('success', 'Post Updated!');
+        return redirect()->route('dashboard')->with('success', 'Post Updated!');
     }
 
     /**
@@ -136,7 +137,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('home')
+        return redirect()->route('dashboard')
             ->with('success', 'Post deleted!');
     }
 }

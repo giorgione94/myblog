@@ -80,7 +80,7 @@
         </main>
         
         <footer class="py-4">
-            @yield('footer')
+            @include('footer')
         </footer>
     </div>
 </body>
