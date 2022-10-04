@@ -5,13 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="m-3">
-                    <img src="{{ asset('images/categories/' . $category->cover_image) }}" class="card-img-top img-thumbnail w-25" alt="...">
+                    <img src="{{ asset('images/categories/' . $category->cover_image) }}" class="card-img-top img-thumbnail img" alt="...">
 
                     <h1 class="text-light">{{ $category->title }}</h1>
                     <p>{{ $category->subtitle }}</p>
 
                     @foreach ($posts as $post)
-                    <div class="card m-3">
+                    <div class="card m-2">
                         <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
