@@ -38,7 +38,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @foreach ($categories as $category)
+                            <li class="nav-item">
+                                <a href="{{ route('categories.show', $category) }}" class="nav-link text-light">
+                                    {{ $category->title }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -64,6 +70,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        {{ __('Dashboard') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

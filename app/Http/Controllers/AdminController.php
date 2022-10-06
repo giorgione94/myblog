@@ -19,8 +19,7 @@ class AdminController extends Controller
     {
         $user_id = Auth::user()->id;
         $posts = Post::where('user_id', $user_id)->with('category')->get();
-        $categories = Category::all();
-        return view('admin.dashboard')->with('posts', $posts)->with('categories', $categories);
+        return view('admin.dashboard')->with('posts', $posts);
     }
 
     public function profile() {
@@ -40,12 +39,7 @@ class AdminController extends Controller
     public function category (Category $category) {
         return $category;
     }
-    public function createPost() {}
-    public function createCategory() {}
-    public function newPost() {}
-
-    public function newCategory() {}
-
+    
     public function updateProfile(Request $request) {
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
@@ -55,6 +49,5 @@ class AdminController extends Controller
         $user->save();
         return redirect(route('editProfile'));
     }
-    public function updatePost() {}
-    public function updateCategory() {}
+   
 }

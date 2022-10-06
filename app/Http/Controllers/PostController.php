@@ -55,7 +55,7 @@ class PostController extends Controller
             'publication_date' => 'required'
         ]);
         if ($request->image) {
-            $name = uniqid().'.'.$request->image->extension();
+            $name = uniqid() . '.' . $request->image->extension();
             $request->image->move(public_path('images/posts'), $name);
         }
         Post::create([
@@ -89,6 +89,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $user = Auth::user();
+        if ($user->id != $post->user_id) {
+            abort(403);
+        }
+        
         $categories = Category::all();
         return view('posts.edit')->with('post', $post)->with('categories', $categories);
     }
@@ -113,7 +118,7 @@ class PostController extends Controller
         ]);
         $name = $post->image;
         if ($request->image) {
-            $name = uniqid().'.'.$request->image->extension();
+            $name = uniqid() . '.' . $request->image->extension();
             $request->image->move(public_path('images/posts'), $name);
         }
         $post->update([
