@@ -95,7 +95,7 @@ class PostController extends Controller
         }
         
         $categories = Category::all();
-        return view('posts.edit')->with('post', $post)->with('categories', $categories);
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
