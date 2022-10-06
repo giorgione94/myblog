@@ -14,33 +14,35 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('updateProfile') }}" method="POST" class="form-control text-light bg-secondary bg-gradient"
+                        <form action="{{ route('updateProfile') }}" method="POST" class="form-control"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3">
+                                    <div class="m-3">
+                                        <label for="name">Name:</label>
                                         <input type="text" name="name" value="{{ $user->name }}">
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3">
+                                    <div class="m-3">
+                                        <label for="bio">Bio:</label>
                                         <textarea name="bio" id="" cols="30" rows="10">{{ $user->bio }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3">
-                                        <input type="file" name="profile_image" value="{{ $user->profile_image }}">
+                                    <div class="m-3">
+                                        <input type="file" name="profile_image" value="{{ $user->profile_image }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-outline-light">Save</button>
+                                    <div class="m-3">
+                                        <button type="submit" class="btn btn-outline-dark">Save</button>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3">
-                                        <a href="{{ route('author', $user) }}" class="btn btn-outline-light">
+                                    <div class="m-3">
+                                        <a href="{{ route('author', $user) }}" class="btn btn-outline-dark">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                 <path
