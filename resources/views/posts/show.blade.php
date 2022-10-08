@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="m-3">
-                    <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25" alt="...">
+                    <img src="{{ asset('images/posts/' . $post->image) }}" class="img-fluid" alt="...">
 
                     <h1 class="text">{{ $post->title }}</h1>
 
