@@ -3,6 +3,7 @@
 /public/storage
 /public/images/posts
 /public/images/categories
+/public/images/authors
 /storage/*.key
 /vendor
 .env

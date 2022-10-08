@@ -14,9 +14,10 @@ class BlogController extends Controller
         return $posts;
     }
 
-    public function author($author)
+    public function author($id)
     {
-        $posts = User::find($author)->posts()->get();
-        return view('author')->with('posts', $posts);
+        $author = User::find($id);
+        $posts = $author->posts()->get();
+        return view('author')->with('posts', $posts)->with('author', $author);
     }
 }

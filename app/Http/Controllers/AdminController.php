@@ -23,8 +23,8 @@ class AdminController extends Controller
     }
 
     public function profile() {
-        $user = Auth::user();
-        return view('admin.profile')->with('user', $user);
+        $author = Auth::user();
+        return view('admin.profile')->with('author', $author);
     }
 
     public function post (Post $post)
@@ -41,13 +41,27 @@ class AdminController extends Controller
     }
     
     public function updateProfile(Request $request) {
+        
+        $request->validate([
+            'name' => 'required',
+            'bio' => 'required',
+            'profile_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
+        $name = $user->profile_image;
+        if ($request->profile_image) {
+            $name = uniqid() . '.' . $request->profile_image->extension();
+            $request->profile_image->move(public_path('images/authors'), $name);
+        }
         $user->name = $request->name;
         $user->bio = $request->bio;
-        $user->profile_image = $request->profile_image;
+        $user->profile_image = $name;
         $user->save();
-        return redirect(route('editProfile'));
+
+        return redirect()->route('dashboard')->with('success', 'User Updated!');
     }
+    
    
 }

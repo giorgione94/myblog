@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="card-group col-md-12">
                 @foreach ($posts as $post)
-                    <div class="card m-3">
+                    <div class="card m-3 col-md-3">
                         <img src="{{ asset('images/posts/' . $post->image) }}" class="card-img-top img-thumbnail w-25"
                             alt="...">
                         <div class="card-body">
@@ -13,7 +13,10 @@
                             <p class="card-subtitle">{{ $post->subtitle }}</p>
                             <p class="card-text">
                                 <small class="text-muted">
-                                    {{ $post->user->name }} |
+                                    <a href="{{ route('author', $post->user->id) }}">
+                                        {{ $post->user->name }}
+                                    </a>
+                                    |
                                     <a href="{{ route('categories.show', $post->category) }}">
                                         {{ $post->category->title }}</a> |
                                     {{ $post->publication_date }}

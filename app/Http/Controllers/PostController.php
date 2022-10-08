@@ -93,8 +93,6 @@ class PostController extends Controller
         if ($user->id != $post->user_id) {
             abort(403);
         }
-        
-        $categories = Category::all();
         return view('posts.edit')->with('post', $post);
     }
 

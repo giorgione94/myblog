@@ -21,18 +21,20 @@
                                 <div class="col">
                                     <div class="m-3">
                                         <label for="name">Name:</label>
-                                        <input type="text" name="name" value="{{ $user->name }}">
+                                        <input type="text" name="name" value="{{ $author->name }}">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="m-3">
                                         <label for="bio">Bio:</label>
-                                        <textarea name="bio" id="" cols="30" rows="10">{{ $user->bio }}</textarea>
+                                        <textarea name="bio" id="" cols="30" rows="10">{{ $author->bio }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="m-3">
-                                        <input type="file" name="profile_image" value="{{ $user->profile_image }}" class="form-control">
+                                        <img src="{{ asset('images/authors/' . $author->profile_image) }}" class="card-img-top img-thumbnail w-25" alt="...">
+
+                                        <input type="file" name="profile_image" value="{{ $author->profile_image }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -42,7 +44,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="m-3">
-                                        <a href="{{ route('author', $user) }}" class="btn btn-outline-dark">
+                                        <a href="{{ route('author', $author) }}" class="btn btn-outline-dark">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                 <path
