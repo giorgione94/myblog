@@ -9,28 +9,28 @@
                     <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-2">
-                            <label for="title" class="form-label text-white">Title</label>
+                            <label for="title" class="form-label ">Title</label>
                             <input type="text" class="form-control" name="title">
                         </div>
                         <div class="mb-2">
-                            <label for="file" class="form-label text-white">Cover_Image</label>
+                            <label for="file" class="form-label ">Cover_Image</label>
                             <input type="file" name="image" class="form-control">
                         </div>
                         <div class="mb-2">
-                            <label for="subtitle" class="form-label text-white">Subtitle</label>
+                            <label for="subtitle" class="form-label ">Subtitle</label>
                             <input type="text" name="subtitle" class="form-control" placeholder="">
                         </div>
                         <div class="mb-2">
-                            <label for="body" class="form-label text-white">Body</label>
+                            <label for="body" class="form-label ">Body</label>
                             <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
                         </div>
                         <div class="mb-2">
-                            <label for="publication_date" class="form-label text-white">Publication_Date</label>
+                            <label for="publication_date" class="form-label ">Publication_Date</label>
                             <input type="date" name="publication_date" class="form-control">
                         </div>
 
                         <div class="mb-2">
-                            <label for="category_id" class="form-label text-white">Choose Category</label>
+                            <label for="category_id" class="form-label ">Choose Category</label>
                             <select class="form-select" id="inputGroupSelect01" name="category_id">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card bg-primary bg-gradient">
+                <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
@@ -16,9 +16,9 @@
 
                         <h1 class="fw-bold text-light">YOUR POSTS</h1>
 
-                        <a href="{{ route('posts.create') }}" class="btn btn-outline-dark mb-2 text-light">New Post</a>
+                        <a href="{{ route('posts.create') }}" class="btn btn-outline-dark mb-2">New Post</a>
 
-                        <table class="table table-hover table-dark table-gradient table-md text-monospace">
+                        <table class="table table-hover table-md text-monospace">
                             <thead>
                                 <th>Title</th>
                                 <th>Category</th>
@@ -30,14 +30,15 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('posts.edit', $post) }}" class="text-light">
-                                                {{ $post->title }}
+                                            <a href="{{ route('posts.edit', $post) }}">
+                                                {{ $post->title }} <i class="bi bi-pencil-fill"></i>
                                             </a>
                                         </td>
                                         <td>{{ $post->category->title }}</td>
                                         <td>{{ $post->publication_date }}</td>
                                         <td>
-                                            <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary">
+                                            <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary"
+                                                target="_blank">
                                                 <i class="bi bi-eye" width="16" height="16"></i>
                                             </a>
                                         </td>
@@ -58,9 +59,9 @@
 
                         <h2 class="fw-bold text-light">CATEGORIES</h2>
 
-                        <a href="{{ route('categories.create') }}" class="btn btn-outline-dark mb-2 text-light">New Category</a>
+                        <a href="{{ route('categories.create') }}" class="btn btn-outline-dark mb-2">New Category</a>
 
-                        <table class="table table-hover table-dark table-gradient table-md text-monospace">
+                        <table class="table table-hover table-transparent table-md text-monospace">
                             <thead>
                                 <th>Title</th>
                                 <th>Show</th>
@@ -70,13 +71,13 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('categories.edit', $category) }}" class="text-light">
-                                                {{ $category->title }}
+                                            <a href="{{ route('categories.edit', $category) }}">
+                                                {{ $category->title }} <i class="bi bi-pencil-fill"></i>
                                             </a>
                                         </td>
                                         <td>
                                             <a href="{{ route('categories.show', $category) }}"
-                                                class="btn btn-outline-primary">
+                                                class="btn btn-outline-primary" target="_blank">
                                                 <i class="bi bi-eye" width="16" height="16"></i>
                                             </a>
                                         </td>
@@ -96,7 +97,7 @@
                             </tbody>
                         </table>
 
-                        <a href="{{ route('editProfile') }}" class="btn btn-outline-dark text-light mb-2">Edit Profile</a>
+                        <a href="{{ route('editProfile') }}" class="btn btn-outline-dark mb-2">Edit Profile</a>
                     </div>
                 </div>
             </div>
