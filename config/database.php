@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL = parse_url('postgres://qgltxnmtchcknu:a5ccace31ea7856540b018356dc9be898bf5dda96c9cd42b592865dc78d57ad1@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d8vqmk4fg5050o');
 return [
 
     /*
@@ -68,7 +67,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'myblog'),
+            'database' => env('DB_DATABASE', 'hobby-dev'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
