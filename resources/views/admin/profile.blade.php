@@ -34,7 +34,7 @@
                                     <div class="m-3">
                                         <img src="{{ asset('images/authors/' . $author->profile_image) }}" class="card-img-top img-thumbnail w-25" alt="...">
 
-                                        <input type="file" name="profile_image" value="{{ $author->profile_image }}" class="form-control">
+                                        <input type="file" name="profile_image" value="{{ $author->profile_image }}" class="form-control mt-3">
                                     </div>
                                 </div>
                                 <div class="col">
