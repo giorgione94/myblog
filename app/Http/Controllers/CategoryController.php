@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $posts = $category->posts()->get();
+        $posts = $category->posts()->paginate(4);
         return view('categories.show')->with('category', $category)->with('posts', $posts);
     }
 

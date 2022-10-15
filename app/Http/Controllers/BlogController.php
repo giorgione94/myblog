@@ -17,7 +17,7 @@ class BlogController extends Controller
     public function author($id)
     {
         $author = User::find($id);
-        $posts = $author->posts()->get();
+        $posts = $author->posts()->paginate(4);
         return view('author')->with('posts', $posts)->with('author', $author);
     }
 }

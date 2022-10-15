@@ -24,6 +24,9 @@
                             @include('layouts.card')
                         @endforeach
                     </div>
+                    <div class="pagination justify-content-center">
+                        {{$posts->links()}}
+                    </div>
                 </div>
             </div>
         </div>

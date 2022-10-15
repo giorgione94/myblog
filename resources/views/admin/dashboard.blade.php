@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <h1 class="fw-bold text-light">YOUR POSTS</h1>
+                        <h1 class="fw-bold">YOUR POSTS</h1>
 
                         <a href="{{ route('posts.create') }}" class="btn btn-outline-dark mb-2">New Post</a>
 
@@ -56,8 +56,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="pagination justify-content-center">
+                            {{$posts->links()}}
+                        </div>
 
-                        <h2 class="fw-bold text-light">CATEGORIES</h2>
+                        <h2 class="fw-bold">CATEGORIES</h2>
 
                         <a href="{{ route('categories.create') }}" class="btn btn-outline-dark mb-2">New Category</a>
 
@@ -96,7 +99,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        
                         <a href="{{ route('editProfile') }}" class="btn btn-outline-dark mb-2">Edit Profile</a>
                     </div>
                 </div>

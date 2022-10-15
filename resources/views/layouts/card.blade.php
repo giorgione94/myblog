@@ -3,7 +3,7 @@
         <img src="{{ asset('images/posts/' . $post->image) }}" class="cover" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ $post->title }}</h5>
-            <p class="card-subtitle">{{ $post->subtitle }}</p>
+            <p class="card-subtitle crop-text-3">{{ $post->subtitle }}</p>
             <p class="card-text">
                 <small class="text-muted">
                     <a href="{{ route('author', $post->user->id) }}">

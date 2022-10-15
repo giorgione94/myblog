@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $posts = Post::where('user_id', $user_id)->with('category')->get();
+        $posts = Post::where('user_id', $user_id)->with('category')->paginate(6);
         return view('admin.dashboard')->with('posts', $posts);
     }
 

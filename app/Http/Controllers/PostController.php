@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(4);
         return view('posts.list')->with('posts', $posts);
     }
 
@@ -107,9 +107,9 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'subtitle' => 'required',
+            'subtitle' => 'required|max:255',
             'body' => 'required',
             'category_id' => 'required',
             'publication_date' => 'required'
