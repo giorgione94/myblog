@@ -9,7 +9,7 @@
 
                     <h1 class="text">{{ $post->title }}</h1>
 
-                    <p>{{ $post->body }}</p>
+                    <p>{!! $post->body !!}</p>
 
                     <p class="card-text">
                         <small class="text">

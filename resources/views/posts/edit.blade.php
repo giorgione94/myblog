@@ -29,7 +29,7 @@
 
                         <div class="mb-2">
                             <label for="body" class="form-label ">Body</label>
-                            <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{ $post->body }}</textarea>
+                            <textarea name="body" id="body" cols="30" rows="10" class="form-control ckeditor">{{ $post->body }}</textarea>
                         </div>
 
                         <div class="mb-2">
@@ -57,6 +57,8 @@
             </div>
         </div>
     </div>
+
+    <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 
 @endsection
 
