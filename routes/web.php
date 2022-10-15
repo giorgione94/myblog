@@ -30,4 +30,4 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class , 'index'])->n
 Route::get('/admin/profile', [App\Http\Controllers\AdminController::class , 'profile'])->name('editProfile');
 Route::post('/admin/profile', [App\Http\Controllers\AdminController::class , 'updateProfile'])->name('updateProfile');
 
-View::share('categories', Category::all());
+//View::share('categories', Category::all());
