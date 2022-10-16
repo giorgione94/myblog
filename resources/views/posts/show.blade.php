@@ -18,10 +18,15 @@
                             {{ $post->publication_date }}
                         </small>
                     </p>
+                    <form action="{{ route('likes.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <button type="submit">LIKE</button>
+                        <span>{{ count($post->likes) }}</span>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
-

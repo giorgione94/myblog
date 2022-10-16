@@ -18,6 +18,7 @@
             <a href="{{ route('posts.show', $post) }}" class="btn btn-secondary bg-gradient">
                 Read More
             </a>
+            <span>{{ count($post->likes) }}</span>
         </div>
     </div>
 </div>

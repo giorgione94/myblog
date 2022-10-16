@@ -29,5 +29,4 @@ Auth::routes();
 Route::get('/admin', [App\Http\Controllers\AdminController::class , 'index'])->name('dashboard');
 Route::get('/admin/profile', [App\Http\Controllers\AdminController::class , 'profile'])->name('editProfile');
 Route::post('/admin/profile', [App\Http\Controllers\AdminController::class , 'updateProfile'])->name('updateProfile');
-
-//View::share('categories', Category::all());
+Route::resource('likes', App\Http\Controllers\LikeController::class);
